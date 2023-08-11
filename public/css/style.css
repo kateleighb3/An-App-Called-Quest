@@ -215,3 +215,11 @@ img {
   height: 300px;
   width: 50%;
 }
+
+footer {
+  padding: 10px;
+  background-color: var(--dark-green);
+  color: var(--tan);
+  font-weight: 100;
+  font-size: 20px;
+}
