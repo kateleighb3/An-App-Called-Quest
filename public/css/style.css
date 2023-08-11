@@ -1,0 +1,217 @@
+:root {
+  --dark-green:#122326;
+  --light-green: #548C62;
+  --tan: #F2DA91;
+  --darker-tan: #F2B66D;
+  --brown: #BF612A;
+  --error: rgb(228, 46, 1);
+  --border-radius: 0.3rem;
+}
+
+body {
+  font-family: Arial;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: flex-start;
+}
+
+main{
+  background-image: url("../images/retro-outdoor-image-1.jpg");
+  background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+
+.mainb{
+  background-image: url("../images/retro-outdoor-image-2.jpg");
+  background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+
+a {
+  color: var(--brown);
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
+
+header {
+  padding: 10px;
+  text-align: center;
+  background: var(--dark-green);
+  color: var(--tan);
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.title-box{
+  display: flex;
+  background-color: var(--tan);
+  height: 60px;
+  float: left;
+  box-shadow: 5px 5px;
+  border: 3px solid black
+}
+.main-title{
+  font-family: 'Bungee Shade', cursive;
+  color: var(--dark-green);
+  /* float:left; */
+  margin: 10px;
+  font-size: 40px;
+}
+
+.b{
+  padding: 10px;
+  text-align: center;
+  background: var(--dark-green);
+  color: var(--tan);
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.title-box-b{
+  background-color: var(--tan);
+  height: 60px;
+  float: right;
+  box-shadow: 5px 5px black;
+  border: 3px solid black
+}
+.main-title-b{
+  font-family: 'Bungee Shade', cursive;
+  color: var(--dark-green);
+  /* float:left; */
+  margin: 10px;
+  font-size: 40px;
+}
+
+nav {
+  display: inline-block;
+  float: left;
+  /* display: flex; */
+  background-color: var(--secondary);
+  padding: 20px;
+}
+
+nav a {
+  color: var(--light);
+  padding: 14px 20px;
+  text-decoration: none;
+  text-align: center;
+}
+
+nav a:hover {
+  color: var(--secondary);
+  background-color: var(--brown);
+}
+
+.main {
+  flex: 4;
+  /* background-image: url("../images/retro-outdoor-image-1.jpg"); */
+  /* background-size: cover; */
+  padding: 50px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-no-style {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 100%;
+  transition: color 0.1s;
+  margin-left: 16px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.painting {
+  width: 50%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+}
+
+.painting-details {
+  text-align: center;
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+/* CARDS */
+.card {
+  margin: 20px;
+  flex: 0 1 300px;
+  border: 7px double var(--tan);
+  border-radius: 10px;
+  background-color: var(--darker-tan);
+  color: var(--dark);
+}
+
+.login-card {
+  margin: 0 0 20px 0;
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding: 5px;
+  border: 3px solid var(--darker-tan);
+  border-radius: var(--border-radius);
+  border-style: double;
+  border-width: thick;
+  background-color: var(--dark-green);
+  color: var(--tan);
+}
+
+.card header {
+  color: var(--tan);
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 0;
+  background-color: var(--brown);
+  padding: 0.625rem;
+  border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
+}
+
+.card-body {
+  font-size: 12px;
+  text-align: center;
+  font-weight: 900;
+}
+
+.gallery-name {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 5px var(--secondary);
+  border: 10px groove var(--light);
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-right: 100px;
+  padding-left: 100px;
+}
+
+/* LAYOUT */
+.container {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: flex-start;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+  height: 300px;
+  width: 50%;
+}
