@@ -1,19 +1,21 @@
-const seedExcursions = require('./excursionData');
-const seedTrips = require('./tripData');
-
 const sequelize = require('../config/connection');
+const seedTrip = require('./tripData');
+const seedExcursion = require('./excursionData');
+const seedTripExcursion = require('./tripexcursionData');
+const seedUser = require('./userData');
 
 const seedAll = async () => {
-    await sequelize.sync({ force: true });
-        console.log('\n----- DATABASE SYNCED -----\n');
+  await sequelize.sync({ force: true });
 
-    await seedExcursions();
-        console.log('\n----- EXCURSIONS SEEDED -----\n');
+  await seedUser();
 
-    await seedTrips();
-        console.log('\----- TRIPS SEEDED -----\n');
+  await seedTrip();
 
-    process.exit(0);
+  await seedExcursion();
+
+  await seedTripExcursion();
+
+  process.exit(0);
 };
 
 seedAll();

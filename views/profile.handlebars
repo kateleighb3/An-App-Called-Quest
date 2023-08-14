@@ -1,0 +1,56 @@
+<div class="row welcome">
+  <div class="col-auto">
+    <h2>Welcome, {{username}}!</h2>
+  </div>
+</div>
+
+<div class="row mt-4 create-trip">
+  <div class="col-md-6">
+    <h3>Create a New Trip:</h3>
+
+    <form class="form new-trip-form create-form">
+      <div class="form-group">
+        <label for="trip-name">Trip Name:</label>
+        <input class="form-input" type="text" id="trip-name" name="trip-name" />
+      </div>
+      <div class="form-group">
+        <label for="start-date">Start Date:</label>
+        <input class="form-input" type="date" id="start-date" name="start-date" />
+      </div>
+      <div class="form-group">
+        <label for="end-date">End Date:</label>
+        <input class="form-input" type="date" id="end-date" name="end-date" />
+      </div>
+      <div class="form-group">
+        <label for="gear">Gear:</label>
+        <textarea class="form-input" id="gear" name="gear"></textarea>
+      </div>
+      {{!-- <div class="form-group">
+        <label for="project-desc">description:</label>
+        <textarea class="form-input" id="project-desc" name="project-desc"></textarea>
+      </div> --}}
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </form>
+  </div>
+
+  {{#if trips.length}}
+  <div class="col-md-6 trip-list">
+    <h3>Current Projects:</h3>
+
+    {{#each trips as |trip|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a href="/project/{{trip.id}}">{{trip.name}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{trip.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+<script src="./js/profile.js"></script>

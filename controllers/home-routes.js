@@ -1,27 +1,27 @@
 const router = require('express').Router();
-const { Gallery, Painting } = require('../models');
+const { Trip, Excursion, User } = require('../models');
 // Import the custom middleware
 const withAuth = require('../utils/auth');
 
-// GET all galleries for homepage
+// GET all trips for homepage
 router.get('/', async (req, res) => {
   try {
-    const dbGalleryData = await Gallery.findAll({
+    const dbTripData = await Trip.findAll({
       include: [
         {
-          model: Painting,
-          attributes: ['filename', 'description'],
+          model: Excursion,
+          attributes: ['name', 'date', 'time', 'description'],
         },
       ],
     });
 
-    const galleries = dbGalleryData.map((gallery) =>
-      gallery.get({ plain: true })
+    const trips = dbTripData.map((trip) =>
+      trip.get({ plain: true })
     );
 
-    res.render('homepage', { layout: 'main'
-      // galleries,
-      // loggedIn: req.session.loggedIn,
+    res.render('homepage', { layout: 'main',
+       trips,
+       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     console.log(err);
@@ -29,46 +29,75 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET one gallery
+// GET one trip
 // Use the custom middleware before allowing the user to access the gallery
-router.get('/gallery/:id', withAuth, async (req, res) => {
+router.get('/trip/:id', withAuth, async (req, res) => {
   try {
-    const dbGalleryData = await Gallery.findByPk(req.params.id, {
+    const dbTripData = await Trip.findByPk(req.params.id, {
       include: [
         {
-          model: Painting,
+          model: Excursion,
           attributes: [
             'id',
-            'title',
-            'artist',
-            'exhibition_date',
-            'filename',
+            'name',
+            'date',
+            'time',
             'description',
           ],
         },
       ],
     });
 
-    const gallery = dbGalleryData.get({ plain: true });
-    res.render('gallery', { gallery, loggedIn: req.session.loggedIn });
+    const trip = dbTripData.get({ plain: true });
+    res.render('trip', { ...trip, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-// GET one painting
+// GET one excursion
 // Use the custom middleware before allowing the user to access the painting
-router.get('/painting/:id', withAuth, async (req, res) => {
+router.get('/excursion/:id', withAuth, async (req, res) => {
   try {
-    const dbPaintingData = await Painting.findByPk(req.params.id);
+    const dbExcursionData = await Excursion.findByPk(req.params.id);
 
-    const painting = dbPaintingData.get({ plain: true });
+    const excursion = dbExcursionData.get({ plain: true });
 
-    res.render('painting', { painting, loggedIn: req.session.loggedIn });
+    res.render('excursion', { excursion, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
+  }
+});
+
+router.get('/profile', withAuth, async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Trip }],
+    });
+
+    console.log('userData:', userData);
+
+    if (!userData) {
+      console.error('User data not found for session user ID:', req.session.user_id);
+      // Handle the case where userData is null, e.g., send an error response
+      res.status(404).json({ message: 'User data not found' });
+      return;
+    }
+
+    const user = userData.get({ plain: true });
+
+    res.render('profile', {layout: 'mainc',
+      ...user,
+      logged_in: true
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({message: "Internal server error"});
+    return;
   }
 });
 
