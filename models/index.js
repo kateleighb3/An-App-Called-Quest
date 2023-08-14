@@ -1,13 +1,29 @@
 const User = require('./User');
 const Trip = require('./Trip');
 const Excursion = require('./Excursion');
+const TripExcursion = require('./TripExcursion');
 
-Excursion.hasMany(Trip, {
-  foreignKey: 'excursion_id',
+User.hasMany(Trip, {
+  foreignKey: 'user_id',
 });
 
-Trip.belongsTo(Excursion, {
+Trip.belongsTo(User, {
+  foreignKey: 'user_id',
+});
+
+Trip.belongsToMany(Excursion, {
+  through: TripExcursion,
   foreignKey: 'trip_id',
 });
 
-module.exports = { User, Excursion, Trip };
+Excursion.belongsToMany(Trip, {
+  through: TripExcursion,
+  foreignKey: 'excursion_id',
+});
+
+module.exports = { 
+  User, 
+  Trip, 
+  Excursion,
+  TripExcursion, 
+};

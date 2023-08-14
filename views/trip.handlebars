@@ -1,0 +1,25 @@
+{{!-- <section class="container">
+  <h3 class="trip-name">{{trip.name}}</h3>
+  <h4>Start Date: {{format_time trip.start_date}}</h4>
+  <h4>Ending Date: {{format_time trip.end_date}}</h4>
+  <section class="flex-row justify-center">
+    {{#each trip.paintings as |trip|}}
+    {{> trip-details}}
+    {{/each}}
+  </section>
+</section> --}}
+
+<div class="text-center">
+  <h2>{{name}}</h2>
+  <p>{{{get_emoji}}}</p>
+  <p>{{description}}</p>
+  <p>Created by {{user.name}} on {{format_date date_created}}</p>
+  <p>
+    <span for="img" aria-label="money">💲</span>
+    <span class="dollar-amount">{{format_amount start_date}}</span>
+    needed
+  </p>
+  <p>
+    <button class="btn btn-primary">Fund this Project!</button>
+  </p>
+</div>

@@ -15,13 +15,13 @@ Excursion.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    Date: {
+    date: {
       type: DataTypes.DATE,
       allowNull: false,
     },
 
     time: {
-      type: DataTypes.DATE,
+      type: DataTypes.DECIMAL,
       allowNull: false,
     },
 
@@ -29,19 +29,13 @@ Excursion.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    gallery_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'gallery',
-        key: 'id',
-      },
-    },
+  
   },
   {
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'painting',
+    modelName: 'excursion',
   }
 );
 
