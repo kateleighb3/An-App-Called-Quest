@@ -41,6 +41,14 @@ main{
   flex-grow: 1;
 }
 
+.maind{
+  background-image: url("../images/hikers.jpg");
+  background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+
 a {
   color: var(--brown);
   text-decoration: none;
@@ -206,17 +214,6 @@ img {
   font-weight: 900;
 }
 
-.gallery-name {
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  text-shadow: 2px 2px 5px var(--secondary);
-  border: 10px groove var(--light);
-  padding-top: 30px;
-  padding-bottom: 30px;
-  padding-right: 100px;
-  padding-left: 100px;
-}
-
 /* LAYOUT */
 .container {
   display: flex;
@@ -248,6 +245,23 @@ img {
 }
 
 .create-form{
+  border: 3px solid var(--tan);
+  background-color: var(--dark-green);
+  color: var(--tan);
+  font-size: 20px;
+  font-weight: 900;
+  padding: 10px;
+}
+
+.trip-list {
+  border: 3px solid green;
+  height: 20%;
+}
+
+.the-list{
+  border: 3px solid red;
+  height: 20%;
+  color: var(--tan);
   border: 3px solid var(--tan);
   background-color: var(--dark-green);
   color: var(--tan);

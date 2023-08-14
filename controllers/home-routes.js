@@ -49,7 +49,7 @@ router.get('/trip/:id', withAuth, async (req, res) => {
     });
 
     const trip = dbTripData.get({ plain: true });
-    res.render('trip', { ...trip, loggedIn: req.session.loggedIn });
+    res.render('trip', {layout: 'maind', ...trip, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
