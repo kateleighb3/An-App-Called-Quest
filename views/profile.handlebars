@@ -37,12 +37,12 @@
 
   {{#if trips.length}}
   <div class="col-md-6 trip-list">
-    <h3>Current Projects:</h3>
+    <h3>Current Trips:</h3>
 
     {{#each trips as |trip|}}
-    <div class="row mb-2">
+    <div class="row mb-2 the-list">
       <div class="col-md-8">
-        <h4><a href="/project/{{trip.id}}">{{trip.name}}</a></h4>
+        <h4><a href="/trip/{{trip.id}}">{{trip.name}}</a></h4>
       </div>
       <div class="col-md-4">
         <button class="btn btn-sm btn-danger" data-id="{{trip.id}}">DELETE</button>
