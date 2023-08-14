@@ -9,17 +9,67 @@
   </section>
 </section> --}}
 
-<div class="text-center">
+<div class="row welcome">
+  <div class="col-auto">
+    <h2>{{name}}!</h2>
+  </div>
+</div>
+
+<div class="row mt-4 create-excursion">
+  <div class="col-md-6">
+    <h3>Add a New Excursion:</h3>
+
+    <form class="form new-excursion-form create-form">
+      <div class="form-group">
+        <label for="excursion-name">Excursion Name:</label>
+        <input class="form-input" type="text" id="excursion-name" name="excursion-name" />
+      </div>
+      <div class="form-group">
+        <label for="start-date">Date:</label>
+        <input class="form-input" type="date" id="excursion-date" name="exc-date" />
+      </div>
+      <div class="form-group">
+        <label for="time">Time:</label>
+        <input class="form-input" type="time" id="excursion-time" name="exc-time" />
+      </div>
+      <div class="form-group">
+        <label for="exc-desc">Description:</label>
+        <textarea class="form-input" id="excursion-description" name="exc-desc"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Add</button>
+      </div>
+    </form>
+  </div>
+
+  {{#if excursions.length}}
+  <div class="col-md-6 trip-list">
+    <h3>Excursions:</h3>
+
+    {{#each excursions as |excursion|}}
+    <div class="row mb-2 the-exc-list">
+      <div class="col-md-8">
+        <h4><a href="/excursion/{{excursion.id}}">{{excursion.name}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{excursion.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+<script src="./js/trip.js"></script>
+
+
+{{!-- <div class="text-center">
   <h2>{{name}}</h2>
-  <p>{{{get_emoji}}}</p>
-  <p>{{description}}</p>
+  <p>{{starting_date}}</p>
+  <p>{{ending_date}}</p>
+  <p>{{gear}}</p>
   <p>Created by {{user.name}} on {{format_date date_created}}</p>
-  <p>
-    <span for="img" aria-label="money">💲</span>
-    <span class="dollar-amount">{{format_amount start_date}}</span>
-    needed
-  </p>
   <p>
     <button class="btn btn-primary">Fund this Project!</button>
   </p>
-</div>
+</div> --}}
