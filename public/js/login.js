@@ -11,9 +11,14 @@ const loginFormHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
 
+    console.log('Response Status:', response.status);
+
+
     if (response.ok) {
-      document.location.replace('/');
+      document.location.replace('/profile');
     } else {
+      const responseData = await response.json();
+      console.log('Error Response:', responseData);
       alert('Failed to log in.');
     }
   }
@@ -22,19 +27,19 @@ const loginFormHandler = async (event) => {
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
-  const username = document.querySelector('#username-signup').value.trim();
+  const username = document.querySelector('#username-signup').value.trim(); //going to html content and grabbing username sign up input and assigning it to the variable of username
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
 
   if (username && email && password) {
     const response = await fetch('/api/users', {
       method: 'POST',
-      body: JSON.stringify({ username, email, password }),
+      body: JSON.stringify({ username, email, password }), //sends payload over post route of api/users
       headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
-      document.location.replace('/');
+      document.location.replace('/profile');
     } else {
       alert('Failed to sign up.');
     }
