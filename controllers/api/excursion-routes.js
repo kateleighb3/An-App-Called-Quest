@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
   try {
     const excursionData = await Excursion.findAll({include: {
       model: Trip,
-      attributes: ['name', 'starting_date', 'ending_date']
+      attributes: ['name', 'location', 'starting_date', 'ending_date']
     }
   });
     res.status(200).json(excursionData);
@@ -36,13 +36,10 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const newExcursion = await Excursion.create({
-      trip_id: req.session.trip_id,
       name: req.body.exc_name_form_value, //model/db name: req.body."form_value"
-      starting_date: req.body. date_form_value,
-      ending_date: req.body.time_form_value,
-      gear: req.body.description_form_value,
-    
-    
+      date: req.body.date_form_value,
+      time: req.body.time_form_value,
+      description: req.body.description_form_value,
     });
     res.status(200).json(newExcursion);
   } catch (err) {

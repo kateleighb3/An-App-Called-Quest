@@ -8,7 +8,7 @@ const withAuth = require('../../utils/auth');
 router.get('/', async (req, res) => {
   try {
     const tripData = await Trip.findAll({
-      attributes: ['id', 'name', 'starting_date', 'ending_date', 'gear'],
+      attributes: ['id', 'name', 'location', 'starting_date', 'ending_date', 'gear'],
       include: [
         {
           model: User,
@@ -29,7 +29,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const tripData = await Trip.findByPk(req.params.id, {
-      attributes: ['id', 'name', 'starting_date', 'ending_date', 'gear'],
+      attributes: ['id', 'name', 'location', 'starting_date', 'ending_date', 'gear'],
       // JOIN with locations, using the Trip through table
       include: [{model: Excursion, through: TripExcursion,}]
     });
@@ -51,6 +51,7 @@ router.post('/', withAuth, async (req, res) => {
     const newTrip = await Trip.create({
       user_id: req.session.user_id,
       name: req.body.trip_name_form_value, //model/db name: req.body."form_value"
+      location: req.body.location_form_value,
       starting_date: req.body.starting_date_form_value,
       ending_date: req.body.ending_date_form_value,
       gear: req.body.gear_form_value,

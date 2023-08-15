@@ -15,6 +15,10 @@ Trip.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    location: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     starting_date: {
       type: DataTypes.DATE,
       allowNull: false,

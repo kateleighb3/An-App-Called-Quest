@@ -1,19 +1,58 @@
-{{!-- <section class="container">
-  <h3 class="trip-name">{{trip.name}}</h3>
-  <h4>Start Date: {{format_time trip.start_date}}</h4>
-  <h4>Ending Date: {{format_time trip.end_date}}</h4>
-  <section class="flex-row justify-center">
-    {{#each trip.paintings as |trip|}}
-    {{> trip-details}}
-    {{/each}}
-  </section>
-</section> --}}
-
 <div class="row welcome">
   <div class="col-auto">
     <h2>{{name}}!</h2>
   </div>
+  </div>
+  <div class="the-deets">
+    <h3>The Deets</h3>
+    <p>WHERE:<span id="location-hbr">{{location}}</span></p>
+    <p>FROM:{{starting_date}}</p>
+    <p>TO:{{ending_date}}</p>
+    <p>GEAR:{{gear}}</p>
+    </div>
+
+{{!-- <div class = "weather-box"> --}}
+   <div class="row m-3" id="city_main"></div>
+  <div class=" row m-3" id="city_forecast">
+      <header class = "forecast">5 Day Forecast</header>
+            <!-- day 1 -->
+              <div class="col">
+                <div class="card forecast_day">
+                  <div class="card-body bg-primary" id="forecast_day1">
+                    </div>
+                </div>
+              </div>
+              <!-- day 2 -->
+                      <div class="col">
+                        <div class="card forecast_day">
+                            <div class="card-body bg-primary" id="forecast_day2">
+                            </div>
+                        </div>
+                      </div>
+
+                      <!-- day 3 -->
+                      <div class="col">
+                        <div class="card forecast_day">
+                            <div class="card-body bg-primary" id="forecast_day3">
+                            </div>
+                        </div>
+                      </div>
+                    <!-- day 4 -->
+                      <div class="col">
+                        <div class="card forecast_day">
+                            <div class="card-body bg-primary" id="forecast_day4">
+                            </div>
+                        </div>
+                      </div>
+                <!-- day 5 -->
+                      <div class="col">
+                        <div class="card forecast_day">
+                            <div class="card-body bg-primary" id="forecast_day5">
+                            </div>
+                        </div>
+                      </div>
 </div>
+{{!-- </div> --}}
 
 <div class="row mt-4 create-excursion">
   <div class="col-md-6">
@@ -43,7 +82,7 @@
   </div>
 
   {{#if excursions.length}}
-  <div class="col-md-6 trip-list">
+  <div class="col-md-6 excursion-list">
     <h3>Excursions:</h3>
 
     {{#each excursions as |excursion|}}
@@ -60,7 +99,13 @@
   {{/if}}
 </div>
 
-<script src="./js/trip.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.9/dayjs.min.js"></script>
+<script
+    src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+    crossorigin="anonymous"></script>
+
+<script src="/js/trip.js"></script>
 
 
 {{!-- <div class="text-center">
