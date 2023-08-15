@@ -21,7 +21,7 @@ Excursion.init(
     },
 
     time: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.TIME,
       allowNull: false,
     },
 

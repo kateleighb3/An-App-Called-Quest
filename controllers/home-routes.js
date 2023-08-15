@@ -38,7 +38,6 @@ router.get('/trip/:id', withAuth, async (req, res) => {
         {
           model: Excursion,
           attributes: [
-            'id',
             'name',
             'date',
             'time',

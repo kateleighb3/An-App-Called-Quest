@@ -254,12 +254,10 @@ img {
 }
 
 .trip-list {
-  border: 3px solid green;
-  height: 20%;
+  height: 100%;
 }
 
 .the-list{
-  border: 3px solid red;
   height: 20%;
   color: var(--tan);
   border: 3px solid var(--tan);
