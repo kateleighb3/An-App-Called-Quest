@@ -82,7 +82,7 @@ header {
   color: var(--dark-green);
   /* float:left; */
   margin: 10px;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .b{
@@ -95,12 +95,16 @@ header {
 }
 
 .title-box-b{
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
   background-color: var(--tan);
   height: 60px;
   float: right;
   box-shadow: 5px 5px black;
   border: 3px solid black
 }
+
 .main-title-b{
   font-family: 'Bungee Shade', cursive;
   color: var(--dark-green);
