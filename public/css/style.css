@@ -73,8 +73,10 @@ header {
   height: 60px;
   float: left;
   box-shadow: 5px 5px;
-  border: 3px solid black
+  border: 3px solid black;
+  align-items: center;
 }
+
 .main-title{
   font-family: 'Bungee Shade', cursive;
   color: var(--dark-green);
