@@ -47,5 +47,20 @@ Trip.init(
     modelName: 'trip',
   }
 );
+// Trip.prototype.addExcursion = async function(excursionId) {
+//   try {
+//     const excursion = await Excursion.findByPk(excursionId);
+
+//     if (!excursion) {
+//       throw new Error('Excursion not found');
+//     }
+
+//     await this.addExcursions(excursion);
+
+//     console.log(`Added excursion "${excursion.name}" to trip "${this.name}"`);
+//   } catch (error) {
+//     console.error('Error adding excursion:', error);
+//   }
+// }
 
 module.exports = Trip;

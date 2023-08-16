@@ -46,7 +46,7 @@
     {{#each trips as |trip|}}
     <div class="row mb-2 the-list">
       <div class="col-md-8">
-        <a href="/trip/{{trip.id}}">{{trip.name}}</a>
+        <h4><a href="/trip/{{trip.id}}">{{trip.name}}</a></h4>
       </div>
       <div class="col-md-4">
         <button class="btn btn-sm btn-danger" data-id="{{trip.id}}">DELETE</button>
