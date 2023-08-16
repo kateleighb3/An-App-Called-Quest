@@ -7,14 +7,14 @@
   </div>
 </section>
 
-{{#if excursions.length}}
+{{!-- {{#if excursions.length}}
   <div class="col-md-6 trip-list">
     <h3>Current Trips:</h3>
 
     {{#each excursions as |excursion|}}
     <div class="row mb-2 the-list">
       <div class="col-md-8">
-        <h4><a href="/trip/{{excursion.id}}">{{excursion.name}}</a></h4>
+        <h4><a href="/trip/{{.id}}">{{excursion.name}}</a></h4>
       </div>
       <div class="col-md-4">
         <button class="btn btn-sm btn-danger" data-id="{{excursion.id}}">DELETE</button>
@@ -23,6 +23,6 @@
     {{/each}}
   </div>
   {{/if}}
-</div>
+</div> --}}
 
-<script src="/js/trip.js"></script>
+<script src="/js/excursion.js"></script>

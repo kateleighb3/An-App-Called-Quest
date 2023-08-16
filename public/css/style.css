@@ -44,6 +44,16 @@ main{
 .maind{
   background-image: url("../images/hikers.jpg");
   background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+
+.maine{
+  background-image: url("../images/beach-sunset.jpg");
+  background-size: cover;
+  background-attachment: fixed;
   display: flex;
   flex-wrap: wrap;
   flex-grow: 1;

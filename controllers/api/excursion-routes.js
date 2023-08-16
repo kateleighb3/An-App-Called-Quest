@@ -4,25 +4,26 @@ const { Excursion, Trip } = require('../../models');
 
 // The `/api/excursion` endpoint
 
-router.get('/', async (req, res) => {
-  try {
-    const excursionData = await Excursion.findAll({
-      attributes: ['id', 'name', 'date', 'time', 'description', 'trip_id'],
-      include: {
-        model: Trip,
-        attributes: ['id', 'name', 'location', 'starting_date', 'ending_date']
-      }
-    });
-    res.status(200).json(excursionData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+// router.get('/', async (req, res) => {
+//   try {
+//     const excursionData = await Excursion.findAll({
+//       attributes: ['id', 'name', 'date', 'time', 'description', 'trip_id'],
+//       include: {
+//         model: Trip,
+//         attributes: ['id', 'name', 'location', 'starting_date', 'ending_date']
+//       }
+//     });
+//     res.status(200).json(excursionData);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 // router.get('/:id', async (req, res) => {
 //   try {
 //     const excursionData = await Excursion.findByPk(req.params.id, {
-//       include: [{model: Trip, through: TripExcursion,}] 
+//       attributes: ['id','name', 'date', 'time', 'description'],
+//       include: [{model: Trip}] 
 //       });
 
 //     if (!excursionData) {
@@ -76,7 +77,8 @@ router.delete('/:id', async (req, res) => {
   try {
     const excursionData = await Excursion.destroy({
       where: {
-        id: req.params.id
+        id: req.params.id,
+        trip_id: req.body.trip_id,
       }
     });
 

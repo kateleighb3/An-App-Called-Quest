@@ -32,7 +32,7 @@ router.get('/:id', async (req, res) => {
       attributes: ['id', 'name', 'location', 'starting_date', 'ending_date', 'gear'],
       // JOIN with locations, using the Trip through table
       include: [{model: Excursion,
-        attributes: ['name', 'date', 'time', 'description', 'trip_id']}]
+        attributes: ['id','name', 'date', 'time', 'description', 'trip_id']}]
     });
 
     if (!tripData) {
