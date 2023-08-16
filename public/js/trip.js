@@ -107,7 +107,7 @@ const newExcursionFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/trip'); ///?
+        document.location.replace('/trip/' + trip_id); ///
       } else {
         alert('Failed to create excursion');
       }
