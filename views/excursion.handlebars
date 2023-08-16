@@ -1,8 +1,28 @@
 <section class="excursion">
-  {{!-- <img src="/images/{{painting.filename}}" alt="{{painting.description}}"> --}}
   <div class="excursion-details">
-    <h3>{{excursion.name}}</h3>
-    <p>{{painting.description}}</p>
-    <p>Excursion Date: {{ format_date excursion.date}}</p>
+    <h3>{{name}}</h3>
+    <p>Excursion Date: {{ format_date date}}</p>
+    <p>{{time}}</p>
+    <p>{{description}}</p>
   </div>
 </section>
+
+{{#if excursions.length}}
+  <div class="col-md-6 trip-list">
+    <h3>Current Trips:</h3>
+
+    {{#each excursions as |excursion|}}
+    <div class="row mb-2 the-list">
+      <div class="col-md-8">
+        <h4><a href="/trip/{{excursion.id}}">{{excursion.name}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{excursion.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+<script src="/js/trip.js"></script>
