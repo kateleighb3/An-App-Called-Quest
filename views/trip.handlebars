@@ -54,11 +54,14 @@
 </div>
 {{!-- </div> --}}
 
+
+{{!-- FORM --}}
+
 <div class="row mt-4 create-excursion">
   <div class="col-md-6">
     <h3>Add a New Excursion:</h3>
 
-    <form class="form new-excursion-form create-form">
+    <form data-trip={{id}} class="form new-excursion-form create-form">
       <div class="form-group">
         <label for="excursion-name">Excursion Name:</label>
         <input class="form-input" type="text" id="excursion-name" name="excursion-name" />
@@ -100,10 +103,10 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.9/dayjs.min.js"></script>
-<script
+{{!-- <script
     src="https://code.jquery.com/jquery-3.7.0.min.js"
     integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script> --}}
 
 <script src="/js/trip.js"></script>
 
