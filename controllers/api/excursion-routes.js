@@ -38,6 +38,7 @@ router.get('/', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
+
     const newExcursion = await Excursion.create({
       trip_id: req.body.trip_id, //////
       name: req.body.exc_name_form_value, //model/db name: req.body."form_value"
@@ -45,6 +46,7 @@ router.post('/', async (req, res) => {
       time: req.body.time_form_value,
       description: req.body.description_form_value,
     });
+    console.log("tripId", trip_id);
     res.status(200).json(newExcursion);
   } catch (err) {
     console.log(err);
