@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Trip, User, Excursion, TripExcursion } = require('../../models');
+const { Trip, User, Excursion} = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // The `/api/trips` endpoint
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
         },
         {
             model: Excursion,
-            attributes: ['name', 'date', 'time', 'description']
+            attributes: ['name', 'date', 'time', 'description', 'trip_id']
         }]
   });
     res.status(200).json(tripData);
@@ -31,7 +31,8 @@ router.get('/:id', async (req, res) => {
     const tripData = await Trip.findByPk(req.params.id, {
       attributes: ['id', 'name', 'location', 'starting_date', 'ending_date', 'gear'],
       // JOIN with locations, using the Trip through table
-      include: [{model: Excursion, through: TripExcursion,}]
+      include: [{model: Excursion,
+        attributes: ['id','name', 'date', 'time', 'description', 'trip_id']}]
     });
 
     if (!tripData) {
@@ -56,6 +57,8 @@ router.post('/', withAuth, async (req, res) => {
       ending_date: req.body.ending_date_form_value,
       gear: req.body.gear_form_value,
       });
+
+    // req.session.trip_id = newTrip.id;
     res.status(200).json(newTrip);
   } catch (err) {
     res.status(400).json(err);
@@ -71,49 +74,49 @@ router.post('/', withAuth, async (req, res) => {
   */
   
 // update trip
-router.put('/:id', (req, res) => {
-  // update trip data
-  Trip.update(req.body, {
-    where: {
-      id: req.params.id,
-    },
-  })
-    .then((trip) => {
-      if (req.body.excursionIds && req.body.excursionIds.length) {
+// router.put('/:id', (req, res) => {
+//   // update trip data
+//   Trip.update(req.body, {
+//     where: {
+//       id: req.params.id,
+//     },
+//   })
+//     .then((trip) => {
+//       if (req.body.excursionIds && req.body.excursionIds.length) {
         
-        TripExcursion.findAll({
-          where: { trip_id: req.params.id }
-        }).then((tripExcursion) => {
-          // create filtered list of new excursion_ids
-          const tripExcursionIds = tripExcursion.map(({ excursion_id }) => excursion_id);
-          const newTripExcursion = req.body.excursionIds
-          .filter((excursion_id) => !tripExcursionIds.includes(excursion_id))
-          .map((excursion_id) => {
-            return {
-              trip_id: req.params.id,
-              excursion_id,
-            };
-          });
+//         TripExcursion.findAll({
+//           where: { trip_id: req.params.id }
+//         }).then((tripExcursion) => {
+//           // create filtered list of new excursion_ids
+//           const tripExcursionIds = tripExcursion.map(({ excursion_id }) => excursion_id);
+//           const newTripExcursion = req.body.excursionIds
+//           .filter((excursion_id) => !tripExcursionIds.includes(excursion_id))
+//           .map((excursion_id) => {
+//             return {
+//               trip_id: req.params.id,
+//               excursion_id,
+//             };
+//           });
 
-            // figure out which ones to remove
-          const tripExcursionRemove = tripExcursion
-          .filter(({ excursion_id }) => !req.body.excursionIds.includes(excursion_id))
-          .map(({ id }) => id);
-                  // run both actions
-          return Promise.all([
-            TripExcursion.destroy({ where: { id: tripExcursionRemove } }),
-            TripExcursion.bulkCreate(newTripExcursion),
-          ]);
-        });
-      }
+//             // figure out which ones to remove
+//           const tripExcursionRemove = tripExcursion
+//           .filter(({ excursion_id }) => !req.body.excursionIds.includes(excursion_id))
+//           .map(({ id }) => id);
+//                   // run both actions
+//           return Promise.all([
+//             TripExcursion.destroy({ where: { id: tripExcursionRemove } }),
+//             TripExcursion.bulkCreate(newTripExcursion),
+//           ]);
+//         });
+//       }
 
-      return res.json(trip);
-    })
-    .catch((err) => {
-      // console.log(err);
-      res.status(400).json(err);
-    });
-});
+//       return res.json(trip);
+//     })
+//     .catch((err) => {
+//       // console.log(err);
+//       res.status(400).json(err);
+//     });
+// });
 
 router.delete('/:id', async (req, res) => {
   try {

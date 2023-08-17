@@ -55,15 +55,39 @@ router.get('/trip/:id', withAuth, async (req, res) => {
   }
 });
 
+
+//get all excursions
+// router.get('/', async (req, res) => {
+//   try {
+//     const dbExcursionData = await Excursion.findAll({
+//       attributes: ['id','name', 'date', 'time', 'description', 'trip_id'],
+//         });
+
+
+//     const excursions = dbExcursionData.map((excursion) =>
+//       excursion.get({ plain: true })
+//     );
+
+//     res.render('trip', { layout: 'maind',
+//        excursions,
+//        loggedIn: req.session.loggedIn,
+//     });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
+
+
 // GET one excursion
-// Use the custom middleware before allowing the user to access the painting
 router.get('/excursion/:id', withAuth, async (req, res) => {
   try {
     const dbExcursionData = await Excursion.findByPk(req.params.id);
+    console.log("excursion id:", req.params.id);
 
     const excursion = dbExcursionData.get({ plain: true });
 
-    res.render('excursion', { excursion, loggedIn: req.session.loggedIn });
+    res.render('excursion', {layout:'maine', ...excursion, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

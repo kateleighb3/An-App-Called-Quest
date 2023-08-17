@@ -44,9 +44,25 @@ main{
 .maind{
   background-image: url("../images/hikers.jpg");
   background-size: cover;
+  background-attachment: fixed;
   display: flex;
   flex-wrap: wrap;
   flex-grow: 1;
+}
+
+.maine{
+  background-image: url("../images/beach-sunset.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+
+.the-deets {
+  color: var(--dark-green);
+  font-size: 20px;
+  font-weight: 900;
 }
 
 a {
@@ -73,16 +89,14 @@ header {
   height: 60px;
   float: left;
   box-shadow: 5px 5px;
-  border: 3px solid black;
-  align-items: center;
+  border: 3px solid black
 }
-
 .main-title{
   font-family: 'Bungee Shade', cursive;
   color: var(--dark-green);
   /* float:left; */
   margin: 10px;
-  font-size: 30px;
+  font-size: 40px;
 }
 
 .b{
@@ -95,30 +109,26 @@ header {
 }
 
 .title-box-b{
-  display: flex;
-  flex-wrap: wrap;
-  align-content: space-around;
   background-color: var(--tan);
   height: 60px;
   float: right;
   box-shadow: 5px 5px black;
   border: 3px solid black
 }
-
 .main-title-b{
   font-family: 'Bungee Shade', cursive;
   color: var(--dark-green);
   /* float:left; */
   margin: 10px;
-  font-size: 30px;
+  font-size: 40px;
 }
 
 nav {
-  /* display: inline-block; */
+  display: inline-block;
   float: left;
-  display: flex;
+  /* display: flex; */
   /* background-color: var(--secondary); */
-  padding: 5px;
+  padding: 20px;
 }
 
 nav a {
@@ -129,7 +139,7 @@ nav a {
 }
 
 nav a:hover {
-  color: var(--dark-green);
+  color: var(--tan);
   background-color: var(--brown);
 }
 
@@ -264,8 +274,7 @@ img {
 }
 
 .the-list{
-  height: 100%;
-  width: 100%;
+  height: 20%;
   color: var(--tan);
   border: 3px solid var(--tan);
   background-color: var(--dark-green);
@@ -273,4 +282,10 @@ img {
   font-size: 20px;
   font-weight: 900;
   padding: 10px;
+}
+
+#city_main {
+  color: var(--dark-green);
+  font-size: 15px;
+  font-weight:900;
 }
