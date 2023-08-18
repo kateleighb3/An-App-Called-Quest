@@ -38,6 +38,7 @@ router.get('/trip/:id', withAuth, async (req, res) => {
         {
           model: Excursion,
           attributes: [
+            'id', //////the answer to having excursion page show up////include excursion id with trip page so the excursion id info is there
             'name',
             'date',
             'time',
