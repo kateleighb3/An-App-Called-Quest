@@ -121,8 +121,7 @@ const newExcursionFormHandler = async (event) => {
   
       const response = await fetch(`/api/excursion/${id}`, {
         method: 'DELETE',
-      });
-  
+      });  
       if (response.ok) {
         document.location.replace('/trip/' + trip_id); ///
       } else {

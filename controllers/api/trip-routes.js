@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
         },
         {
             model: Excursion,
-            attributes: ['name', 'date', 'time', 'description', 'trip_id']
+            attributes: ['id', 'name', 'date', 'time', 'description', 'trip_id']
         }]
   });
     res.status(200).json(tripData);

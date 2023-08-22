@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
       attributes: ['id', 'name', 'date', 'time', 'description', 'trip_id'],
       include: {
         model: Trip,
-        attributes: ['id', 'name', 'location', 'starting_date', 'ending_date']
+        attributes: ['id', 'name', 'location', 'starting_date', 'ending_date'],
       }
     });
     res.status(200).json(excursionData);
@@ -19,23 +19,23 @@ router.get('/', async (req, res) => {
   }
 });
 
-// router.get('/:id', async (req, res) => {
-//   try {
-//     const excursionData = await Excursion.findByPk(req.params.id, {
-//       attributes: ['id','name', 'date', 'time', 'description'],
-//       include: [{model: Trip}] 
-//       });
+router.get('/:id', async (req, res) => {
+  try {
+    const excursionData = await Excursion.findByPk(req.params.id, {
+      attributes: ['id','name', 'date', 'time', 'description','trip_id'],
+      include: [{model: Trip}] 
+      });
 
-//     if (!excursionData) {
-//       res.status(404).json({ message: 'No excursion found with this id!' });
-//       return;
-//     }
+    if (!excursionData) {
+      res.status(404).json({ message: 'No excursion found with this id!' });
+      return;
+    }
 
-//     res.status(200).json(excursionData);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+    res.status(200).json(excursionData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.post('/', async (req, res) => {
   try {
@@ -47,7 +47,7 @@ router.post('/', async (req, res) => {
       time: req.body.time_form_value,
       description: req.body.description_form_value,
     });
-    console.log("tripId", trip_id);
+    // console.log("tripId", trip_id); // commenting this out fixed excursions to appear on page when "add" button clicked rather than error message and only appears after page refreshed.
     res.status(200).json(newExcursion);
   } catch (err) {
     console.log(err);
