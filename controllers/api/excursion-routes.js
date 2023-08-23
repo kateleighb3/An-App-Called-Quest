@@ -80,7 +80,7 @@ router.delete('/:id', async (req, res) => {
     const excursionData = await Excursion.destroy({
       where: {
         id: req.params.id,
-        trip_id: req.body.trip_id,
+        // trip_id: req.body.trip_id, // commenting this out + placing const trip_id in trip.js into global scope in trip.js enables user to delete excursions.
       }
     });
 
