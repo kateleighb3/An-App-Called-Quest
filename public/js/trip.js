@@ -3,6 +3,8 @@
     const locationName = document.getElementById('location-hbr');
     const cityMain = document.getElementById('city_main');
     const API_KEY = "de0d75ceee768bc79a63e37a19a280d3";
+    const trip_id = document.querySelector('.new-excursion-form').dataset.trip; // commenting out trip_id: req.body.trip_id in excursion-routes and moving const trip_id to global scope enables user to delete excursions
+
 
 
   //   function loadPage() {
@@ -95,7 +97,6 @@ const newExcursionFormHandler = async (event) => {
     const date_form_value = document.querySelector('#excursion-date').value.trim();
     const time_form_value = document.querySelector('#excursion-time').value.trim();
     const description_form_value = document.querySelector('#excursion-description').value.trim();
-    const trip_id = document.querySelector('.new-excursion-form').dataset.trip;
     console.log("trip id", trip_id);
     if (exc_name_form_value && date_form_value) {
       const response = await fetch(`/api/excursion`, {
@@ -121,13 +122,14 @@ const newExcursionFormHandler = async (event) => {
   
       const response = await fetch(`/api/excursion/${id}`, {
         method: 'DELETE',
-      });  
+      });
+  
       if (response.ok) {
         document.location.replace('/trip/' + trip_id); ///
+        
       } else {
         alert('Failed to delete excursion');
       }
-
     }
   };
   
