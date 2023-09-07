@@ -104,7 +104,7 @@ router.get('/profile', withAuth, async (req, res) => {
     });
 
     console.log('userData:', userData);
-
+    console.log(req.session.user_id)
     if (!userData) {
       console.error('User data not found for session user ID:', req.session.user_id);
       // Handle the case where userData is null, e.g., send an error response
@@ -114,7 +114,7 @@ router.get('/profile', withAuth, async (req, res) => {
 
     const user = userData.get({ plain: true });
 
-    res.render('profile', {layout: 'mainc',
+    res.render('profile', {layouts: 'mainc',
       ...user,
       logged_in: true
     });
